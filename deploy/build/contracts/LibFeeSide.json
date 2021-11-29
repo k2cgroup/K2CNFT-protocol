@@ -1,0 +1,1810 @@
+{
+  "contractName": "LibFeeSide",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@rarible/exchange-v2/contracts/LibFeeSide.sol\":\"LibFeeSide\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@rarible/exchange-v2/contracts/LibFeeSide.sol\":{\"keccak256\":\"0xdae9c5274666656347d224f0c65bf14591969a94ecc9007adc91e80757cfec1a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://284ebf087d9668b74dbeb1c56b561432a7b3f2baf039c9d9677fc65867d14421\",\"dweb:/ipfs/Qmb4zSUa2PAQyKDFkhPuXNJBMWU83oZ52aqnRVEgnLPLNX\"]},\"@rarible/lib-asset/contracts/LibAsset.sol\":{\"keccak256\":\"0xab031424268ceeee7144ee1b080c9fc682cbb2250835c17f8e52d964452e2945\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://91803aec41204da6b7cf95b0df53c1514b84d6af15c89bcee912c92aa9901b92\",\"dweb:/ipfs/QmXwQ8CHPt6Jh6S5dBB5MATRZFZXmvN3MiYTjrBmR8Tho2\"]}},\"version\":1}",
+  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220db638e74c3fac7dff2089d12ca30f20ed19ee27141499d9c999f9a660fdd8e8364736f6c63430007060033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220db638e74c3fac7dff2089d12ca30f20ed19ee27141499d9c999f9a660fdd8e8364736f6c63430007060033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "110:737:38:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "110:737:38:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity 0.7.6;\n\nimport \"@rarible/lib-asset/contracts/LibAsset.sol\";\n\nlibrary LibFeeSide {\n\n    enum FeeSide {NONE, MAKE, TAKE}\n\n    function getFeeSide(bytes4 make, bytes4 take) internal pure returns (FeeSide) {\n        if (make == LibAsset.ETH_ASSET_CLASS) {\n            return FeeSide.MAKE;\n        }\n        if (take == LibAsset.ETH_ASSET_CLASS) {\n            return FeeSide.TAKE;\n        }\n        if (make == LibAsset.ERC20_ASSET_CLASS) {\n            return FeeSide.MAKE;\n        }\n        if (take == LibAsset.ERC20_ASSET_CLASS) {\n            return FeeSide.TAKE;\n        }\n        if (make == LibAsset.ERC1155_ASSET_CLASS) {\n            return FeeSide.MAKE;\n        }\n        if (take == LibAsset.ERC1155_ASSET_CLASS) {\n            return FeeSide.TAKE;\n        }\n        return FeeSide.NONE;\n    }\n}\n",
+  "sourcePath": "@rarible/exchange-v2/contracts/LibFeeSide.sol",
+  "ast": {
+    "absolutePath": "@rarible/exchange-v2/contracts/LibFeeSide.sol",
+    "exportedSymbols": {
+      "LibAsset": [
+        7592
+      ],
+      "LibFeeSide": [
+        4747
+      ]
+    },
+    "id": 4748,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4674,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:22:38"
+      },
+      {
+        "absolutePath": "@rarible/lib-asset/contracts/LibAsset.sol",
+        "file": "@rarible/lib-asset/contracts/LibAsset.sol",
+        "id": 4675,
+        "nodeType": "ImportDirective",
+        "scope": 4748,
+        "sourceUnit": 7593,
+        "src": "57:51:38",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 4747,
+        "linearizedBaseContracts": [
+          4747
+        ],
+        "name": "LibFeeSide",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "LibFeeSide.FeeSide",
+            "id": 4679,
+            "members": [
+              {
+                "id": 4676,
+                "name": "NONE",
+                "nodeType": "EnumValue",
+                "src": "150:4:38"
+              },
+              {
+                "id": 4677,
+                "name": "MAKE",
+                "nodeType": "EnumValue",
+                "src": "156:4:38"
+              },
+              {
+                "id": 4678,
+                "name": "TAKE",
+                "nodeType": "EnumValue",
+                "src": "162:4:38"
+              }
+            ],
+            "name": "FeeSide",
+            "nodeType": "EnumDefinition",
+            "src": "136:31:38"
+          },
+          {
+            "body": {
+              "id": 4745,
+              "nodeType": "Block",
+              "src": "251:594:38",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    },
+                    "id": 4691,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 4688,
+                      "name": "make",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4681,
+                      "src": "265:4:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 4689,
+                        "name": "LibAsset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7592,
+                        "src": "273:8:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_LibAsset_$7592_$",
+                          "typeString": "type(library LibAsset)"
+                        }
+                      },
+                      "id": 4690,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "ETH_ASSET_CLASS",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7489,
+                      "src": "273:24:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "src": "265:32:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 4696,
+                  "nodeType": "IfStatement",
+                  "src": "261:82:38",
+                  "trueBody": {
+                    "id": 4695,
+                    "nodeType": "Block",
+                    "src": "299:44:38",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 4692,
+                            "name": "FeeSide",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4679,
+                            "src": "320:7:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_FeeSide_$4679_$",
+                              "typeString": "type(enum LibFeeSide.FeeSide)"
+                            }
+                          },
+                          "id": 4693,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "MAKE",
+                          "nodeType": "MemberAccess",
+                          "src": "320:12:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_FeeSide_$4679",
+                            "typeString": "enum LibFeeSide.FeeSide"
+                          }
+                        },
+                        "functionReturnParameters": 4687,
+                        "id": 4694,
+                        "nodeType": "Return",
+                        "src": "313:19:38"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    },
+                    "id": 4700,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 4697,
+                      "name": "take",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4683,
+                      "src": "356:4:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 4698,
+                        "name": "LibAsset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7592,
+                        "src": "364:8:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_LibAsset_$7592_$",
+                          "typeString": "type(library LibAsset)"
+                        }
+                      },
+                      "id": 4699,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "ETH_ASSET_CLASS",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7489,
+                      "src": "364:24:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "src": "356:32:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 4705,
+                  "nodeType": "IfStatement",
+                  "src": "352:82:38",
+                  "trueBody": {
+                    "id": 4704,
+                    "nodeType": "Block",
+                    "src": "390:44:38",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 4701,
+                            "name": "FeeSide",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4679,
+                            "src": "411:7:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_FeeSide_$4679_$",
+                              "typeString": "type(enum LibFeeSide.FeeSide)"
+                            }
+                          },
+                          "id": 4702,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "TAKE",
+                          "nodeType": "MemberAccess",
+                          "src": "411:12:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_FeeSide_$4679",
+                            "typeString": "enum LibFeeSide.FeeSide"
+                          }
+                        },
+                        "functionReturnParameters": 4687,
+                        "id": 4703,
+                        "nodeType": "Return",
+                        "src": "404:19:38"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    },
+                    "id": 4709,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 4706,
+                      "name": "make",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4681,
+                      "src": "447:4:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 4707,
+                        "name": "LibAsset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7592,
+                        "src": "455:8:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_LibAsset_$7592_$",
+                          "typeString": "type(library LibAsset)"
+                        }
+                      },
+                      "id": 4708,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "ERC20_ASSET_CLASS",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7497,
+                      "src": "455:26:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "src": "447:34:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 4714,
+                  "nodeType": "IfStatement",
+                  "src": "443:84:38",
+                  "trueBody": {
+                    "id": 4713,
+                    "nodeType": "Block",
+                    "src": "483:44:38",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 4710,
+                            "name": "FeeSide",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4679,
+                            "src": "504:7:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_FeeSide_$4679_$",
+                              "typeString": "type(enum LibFeeSide.FeeSide)"
+                            }
+                          },
+                          "id": 4711,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "MAKE",
+                          "nodeType": "MemberAccess",
+                          "src": "504:12:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_FeeSide_$4679",
+                            "typeString": "enum LibFeeSide.FeeSide"
+                          }
+                        },
+                        "functionReturnParameters": 4687,
+                        "id": 4712,
+                        "nodeType": "Return",
+                        "src": "497:19:38"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    },
+                    "id": 4718,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 4715,
+                      "name": "take",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4683,
+                      "src": "540:4:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 4716,
+                        "name": "LibAsset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7592,
+                        "src": "548:8:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_LibAsset_$7592_$",
+                          "typeString": "type(library LibAsset)"
+                        }
+                      },
+                      "id": 4717,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "ERC20_ASSET_CLASS",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7497,
+                      "src": "548:26:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "src": "540:34:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 4723,
+                  "nodeType": "IfStatement",
+                  "src": "536:84:38",
+                  "trueBody": {
+                    "id": 4722,
+                    "nodeType": "Block",
+                    "src": "576:44:38",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 4719,
+                            "name": "FeeSide",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4679,
+                            "src": "597:7:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_FeeSide_$4679_$",
+                              "typeString": "type(enum LibFeeSide.FeeSide)"
+                            }
+                          },
+                          "id": 4720,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "TAKE",
+                          "nodeType": "MemberAccess",
+                          "src": "597:12:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_FeeSide_$4679",
+                            "typeString": "enum LibFeeSide.FeeSide"
+                          }
+                        },
+                        "functionReturnParameters": 4687,
+                        "id": 4721,
+                        "nodeType": "Return",
+                        "src": "590:19:38"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    },
+                    "id": 4727,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 4724,
+                      "name": "make",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4681,
+                      "src": "633:4:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 4725,
+                        "name": "LibAsset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7592,
+                        "src": "641:8:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_LibAsset_$7592_$",
+                          "typeString": "type(library LibAsset)"
+                        }
+                      },
+                      "id": 4726,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "ERC1155_ASSET_CLASS",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7513,
+                      "src": "641:28:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "src": "633:36:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 4732,
+                  "nodeType": "IfStatement",
+                  "src": "629:86:38",
+                  "trueBody": {
+                    "id": 4731,
+                    "nodeType": "Block",
+                    "src": "671:44:38",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 4728,
+                            "name": "FeeSide",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4679,
+                            "src": "692:7:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_FeeSide_$4679_$",
+                              "typeString": "type(enum LibFeeSide.FeeSide)"
+                            }
+                          },
+                          "id": 4729,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "MAKE",
+                          "nodeType": "MemberAccess",
+                          "src": "692:12:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_FeeSide_$4679",
+                            "typeString": "enum LibFeeSide.FeeSide"
+                          }
+                        },
+                        "functionReturnParameters": 4687,
+                        "id": 4730,
+                        "nodeType": "Return",
+                        "src": "685:19:38"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    },
+                    "id": 4736,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 4733,
+                      "name": "take",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4683,
+                      "src": "728:4:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 4734,
+                        "name": "LibAsset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7592,
+                        "src": "736:8:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_LibAsset_$7592_$",
+                          "typeString": "type(library LibAsset)"
+                        }
+                      },
+                      "id": 4735,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "ERC1155_ASSET_CLASS",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7513,
+                      "src": "736:28:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "src": "728:36:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 4741,
+                  "nodeType": "IfStatement",
+                  "src": "724:86:38",
+                  "trueBody": {
+                    "id": 4740,
+                    "nodeType": "Block",
+                    "src": "766:44:38",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 4737,
+                            "name": "FeeSide",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4679,
+                            "src": "787:7:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_FeeSide_$4679_$",
+                              "typeString": "type(enum LibFeeSide.FeeSide)"
+                            }
+                          },
+                          "id": 4738,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "TAKE",
+                          "nodeType": "MemberAccess",
+                          "src": "787:12:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_FeeSide_$4679",
+                            "typeString": "enum LibFeeSide.FeeSide"
+                          }
+                        },
+                        "functionReturnParameters": 4687,
+                        "id": 4739,
+                        "nodeType": "Return",
+                        "src": "780:19:38"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "expression": {
+                      "id": 4742,
+                      "name": "FeeSide",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4679,
+                      "src": "826:7:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_enum$_FeeSide_$4679_$",
+                        "typeString": "type(enum LibFeeSide.FeeSide)"
+                      }
+                    },
+                    "id": 4743,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "memberName": "NONE",
+                    "nodeType": "MemberAccess",
+                    "src": "826:12:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_FeeSide_$4679",
+                      "typeString": "enum LibFeeSide.FeeSide"
+                    }
+                  },
+                  "functionReturnParameters": 4687,
+                  "id": 4744,
+                  "nodeType": "Return",
+                  "src": "819:19:38"
+                }
+              ]
+            },
+            "id": 4746,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFeeSide",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4684,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4681,
+                  "mutability": "mutable",
+                  "name": "make",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4746,
+                  "src": "193:11:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 4680,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "193:6:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4683,
+                  "mutability": "mutable",
+                  "name": "take",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4746,
+                  "src": "206:11:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 4682,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "206:6:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "192:26:38"
+            },
+            "returnParameters": {
+              "id": 4687,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4686,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4746,
+                  "src": "242:7:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_FeeSide_$4679",
+                    "typeString": "enum LibFeeSide.FeeSide"
+                  },
+                  "typeName": {
+                    "id": 4685,
+                    "name": "FeeSide",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 4679,
+                    "src": "242:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_FeeSide_$4679",
+                      "typeString": "enum LibFeeSide.FeeSide"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "241:9:38"
+            },
+            "scope": 4747,
+            "src": "173:672:38",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4748,
+        "src": "110:737:38"
+      }
+    ],
+    "src": "33:815:38"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "@rarible/exchange-v2/contracts/LibFeeSide.sol",
+      "exportedSymbols": {
+        "LibAsset": [
+          7592
+        ],
+        "LibFeeSide": [
+          4747
+        ]
+      },
+      "license": "MIT"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".6"
+          ]
+        },
+        "id": 4674,
+        "name": "PragmaDirective",
+        "src": "33:22:38"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 7593,
+          "absolutePath": "@rarible/lib-asset/contracts/LibAsset.sol",
+          "file": "@rarible/lib-asset/contracts/LibAsset.sol",
+          "scope": 4748,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4675,
+        "name": "ImportDirective",
+        "src": "57:51:38"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            4747
+          ],
+          "name": "LibFeeSide",
+          "scope": 4748
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "LibFeeSide.FeeSide",
+              "name": "FeeSide"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "NONE"
+                },
+                "id": 4676,
+                "name": "EnumValue",
+                "src": "150:4:38"
+              },
+              {
+                "attributes": {
+                  "name": "MAKE"
+                },
+                "id": 4677,
+                "name": "EnumValue",
+                "src": "156:4:38"
+              },
+              {
+                "attributes": {
+                  "name": "TAKE"
+                },
+                "id": 4678,
+                "name": "EnumValue",
+                "src": "162:4:38"
+              }
+            ],
+            "id": 4679,
+            "name": "EnumDefinition",
+            "src": "136:31:38"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getFeeSide",
+              "scope": 4747,
+              "stateMutability": "pure",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "make",
+                      "scope": 4746,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes4",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes4",
+                          "type": "bytes4"
+                        },
+                        "id": 4680,
+                        "name": "ElementaryTypeName",
+                        "src": "193:6:38"
+                      }
+                    ],
+                    "id": 4681,
+                    "name": "VariableDeclaration",
+                    "src": "193:11:38"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "take",
+                      "scope": 4746,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes4",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes4",
+                          "type": "bytes4"
+                        },
+                        "id": 4682,
+                        "name": "ElementaryTypeName",
+                        "src": "206:6:38"
+                      }
+                    ],
+                    "id": 4683,
+                    "name": "VariableDeclaration",
+                    "src": "206:11:38"
+                  }
+                ],
+                "id": 4684,
+                "name": "ParameterList",
+                "src": "192:26:38"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 4746,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "enum LibFeeSide.FeeSide",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "FeeSide",
+                          "referencedDeclaration": 4679,
+                          "type": "enum LibFeeSide.FeeSide"
+                        },
+                        "id": 4685,
+                        "name": "UserDefinedTypeName",
+                        "src": "242:7:38"
+                      }
+                    ],
+                    "id": 4686,
+                    "name": "VariableDeclaration",
+                    "src": "242:7:38"
+                  }
+                ],
+                "id": 4687,
+                "name": "ParameterList",
+                "src": "241:9:38"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4681,
+                              "type": "bytes4",
+                              "value": "make"
+                            },
+                            "id": 4688,
+                            "name": "Identifier",
+                            "src": "265:4:38"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "ETH_ASSET_CLASS",
+                              "referencedDeclaration": 7489,
+                              "type": "bytes4"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7592,
+                                  "type": "type(library LibAsset)",
+                                  "value": "LibAsset"
+                                },
+                                "id": 4689,
+                                "name": "Identifier",
+                                "src": "273:8:38"
+                              }
+                            ],
+                            "id": 4690,
+                            "name": "MemberAccess",
+                            "src": "273:24:38"
+                          }
+                        ],
+                        "id": 4691,
+                        "name": "BinaryOperation",
+                        "src": "265:32:38"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 4687
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "MAKE",
+                                  "type": "enum LibFeeSide.FeeSide"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4679,
+                                      "type": "type(enum LibFeeSide.FeeSide)",
+                                      "value": "FeeSide"
+                                    },
+                                    "id": 4692,
+                                    "name": "Identifier",
+                                    "src": "320:7:38"
+                                  }
+                                ],
+                                "id": 4693,
+                                "name": "MemberAccess",
+                                "src": "320:12:38"
+                              }
+                            ],
+                            "id": 4694,
+                            "name": "Return",
+                            "src": "313:19:38"
+                          }
+                        ],
+                        "id": 4695,
+                        "name": "Block",
+                        "src": "299:44:38"
+                      }
+                    ],
+                    "id": 4696,
+                    "name": "IfStatement",
+                    "src": "261:82:38"
+                  },
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4683,
+                              "type": "bytes4",
+                              "value": "take"
+                            },
+                            "id": 4697,
+                            "name": "Identifier",
+                            "src": "356:4:38"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "ETH_ASSET_CLASS",
+                              "referencedDeclaration": 7489,
+                              "type": "bytes4"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7592,
+                                  "type": "type(library LibAsset)",
+                                  "value": "LibAsset"
+                                },
+                                "id": 4698,
+                                "name": "Identifier",
+                                "src": "364:8:38"
+                              }
+                            ],
+                            "id": 4699,
+                            "name": "MemberAccess",
+                            "src": "364:24:38"
+                          }
+                        ],
+                        "id": 4700,
+                        "name": "BinaryOperation",
+                        "src": "356:32:38"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 4687
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "TAKE",
+                                  "type": "enum LibFeeSide.FeeSide"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4679,
+                                      "type": "type(enum LibFeeSide.FeeSide)",
+                                      "value": "FeeSide"
+                                    },
+                                    "id": 4701,
+                                    "name": "Identifier",
+                                    "src": "411:7:38"
+                                  }
+                                ],
+                                "id": 4702,
+                                "name": "MemberAccess",
+                                "src": "411:12:38"
+                              }
+                            ],
+                            "id": 4703,
+                            "name": "Return",
+                            "src": "404:19:38"
+                          }
+                        ],
+                        "id": 4704,
+                        "name": "Block",
+                        "src": "390:44:38"
+                      }
+                    ],
+                    "id": 4705,
+                    "name": "IfStatement",
+                    "src": "352:82:38"
+                  },
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4681,
+                              "type": "bytes4",
+                              "value": "make"
+                            },
+                            "id": 4706,
+                            "name": "Identifier",
+                            "src": "447:4:38"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "ERC20_ASSET_CLASS",
+                              "referencedDeclaration": 7497,
+                              "type": "bytes4"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7592,
+                                  "type": "type(library LibAsset)",
+                                  "value": "LibAsset"
+                                },
+                                "id": 4707,
+                                "name": "Identifier",
+                                "src": "455:8:38"
+                              }
+                            ],
+                            "id": 4708,
+                            "name": "MemberAccess",
+                            "src": "455:26:38"
+                          }
+                        ],
+                        "id": 4709,
+                        "name": "BinaryOperation",
+                        "src": "447:34:38"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 4687
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "MAKE",
+                                  "type": "enum LibFeeSide.FeeSide"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4679,
+                                      "type": "type(enum LibFeeSide.FeeSide)",
+                                      "value": "FeeSide"
+                                    },
+                                    "id": 4710,
+                                    "name": "Identifier",
+                                    "src": "504:7:38"
+                                  }
+                                ],
+                                "id": 4711,
+                                "name": "MemberAccess",
+                                "src": "504:12:38"
+                              }
+                            ],
+                            "id": 4712,
+                            "name": "Return",
+                            "src": "497:19:38"
+                          }
+                        ],
+                        "id": 4713,
+                        "name": "Block",
+                        "src": "483:44:38"
+                      }
+                    ],
+                    "id": 4714,
+                    "name": "IfStatement",
+                    "src": "443:84:38"
+                  },
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4683,
+                              "type": "bytes4",
+                              "value": "take"
+                            },
+                            "id": 4715,
+                            "name": "Identifier",
+                            "src": "540:4:38"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "ERC20_ASSET_CLASS",
+                              "referencedDeclaration": 7497,
+                              "type": "bytes4"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7592,
+                                  "type": "type(library LibAsset)",
+                                  "value": "LibAsset"
+                                },
+                                "id": 4716,
+                                "name": "Identifier",
+                                "src": "548:8:38"
+                              }
+                            ],
+                            "id": 4717,
+                            "name": "MemberAccess",
+                            "src": "548:26:38"
+                          }
+                        ],
+                        "id": 4718,
+                        "name": "BinaryOperation",
+                        "src": "540:34:38"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 4687
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "TAKE",
+                                  "type": "enum LibFeeSide.FeeSide"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4679,
+                                      "type": "type(enum LibFeeSide.FeeSide)",
+                                      "value": "FeeSide"
+                                    },
+                                    "id": 4719,
+                                    "name": "Identifier",
+                                    "src": "597:7:38"
+                                  }
+                                ],
+                                "id": 4720,
+                                "name": "MemberAccess",
+                                "src": "597:12:38"
+                              }
+                            ],
+                            "id": 4721,
+                            "name": "Return",
+                            "src": "590:19:38"
+                          }
+                        ],
+                        "id": 4722,
+                        "name": "Block",
+                        "src": "576:44:38"
+                      }
+                    ],
+                    "id": 4723,
+                    "name": "IfStatement",
+                    "src": "536:84:38"
+                  },
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4681,
+                              "type": "bytes4",
+                              "value": "make"
+                            },
+                            "id": 4724,
+                            "name": "Identifier",
+                            "src": "633:4:38"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "ERC1155_ASSET_CLASS",
+                              "referencedDeclaration": 7513,
+                              "type": "bytes4"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7592,
+                                  "type": "type(library LibAsset)",
+                                  "value": "LibAsset"
+                                },
+                                "id": 4725,
+                                "name": "Identifier",
+                                "src": "641:8:38"
+                              }
+                            ],
+                            "id": 4726,
+                            "name": "MemberAccess",
+                            "src": "641:28:38"
+                          }
+                        ],
+                        "id": 4727,
+                        "name": "BinaryOperation",
+                        "src": "633:36:38"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 4687
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "MAKE",
+                                  "type": "enum LibFeeSide.FeeSide"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4679,
+                                      "type": "type(enum LibFeeSide.FeeSide)",
+                                      "value": "FeeSide"
+                                    },
+                                    "id": 4728,
+                                    "name": "Identifier",
+                                    "src": "692:7:38"
+                                  }
+                                ],
+                                "id": 4729,
+                                "name": "MemberAccess",
+                                "src": "692:12:38"
+                              }
+                            ],
+                            "id": 4730,
+                            "name": "Return",
+                            "src": "685:19:38"
+                          }
+                        ],
+                        "id": 4731,
+                        "name": "Block",
+                        "src": "671:44:38"
+                      }
+                    ],
+                    "id": 4732,
+                    "name": "IfStatement",
+                    "src": "629:86:38"
+                  },
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4683,
+                              "type": "bytes4",
+                              "value": "take"
+                            },
+                            "id": 4733,
+                            "name": "Identifier",
+                            "src": "728:4:38"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "ERC1155_ASSET_CLASS",
+                              "referencedDeclaration": 7513,
+                              "type": "bytes4"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7592,
+                                  "type": "type(library LibAsset)",
+                                  "value": "LibAsset"
+                                },
+                                "id": 4734,
+                                "name": "Identifier",
+                                "src": "736:8:38"
+                              }
+                            ],
+                            "id": 4735,
+                            "name": "MemberAccess",
+                            "src": "736:28:38"
+                          }
+                        ],
+                        "id": 4736,
+                        "name": "BinaryOperation",
+                        "src": "728:36:38"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 4687
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "member_name": "TAKE",
+                                  "type": "enum LibFeeSide.FeeSide"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4679,
+                                      "type": "type(enum LibFeeSide.FeeSide)",
+                                      "value": "FeeSide"
+                                    },
+                                    "id": 4737,
+                                    "name": "Identifier",
+                                    "src": "787:7:38"
+                                  }
+                                ],
+                                "id": 4738,
+                                "name": "MemberAccess",
+                                "src": "787:12:38"
+                              }
+                            ],
+                            "id": 4739,
+                            "name": "Return",
+                            "src": "780:19:38"
+                          }
+                        ],
+                        "id": 4740,
+                        "name": "Block",
+                        "src": "766:44:38"
+                      }
+                    ],
+                    "id": 4741,
+                    "name": "IfStatement",
+                    "src": "724:86:38"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 4687
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "member_name": "NONE",
+                          "type": "enum LibFeeSide.FeeSide"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4679,
+                              "type": "type(enum LibFeeSide.FeeSide)",
+                              "value": "FeeSide"
+                            },
+                            "id": 4742,
+                            "name": "Identifier",
+                            "src": "826:7:38"
+                          }
+                        ],
+                        "id": 4743,
+                        "name": "MemberAccess",
+                        "src": "826:12:38"
+                      }
+                    ],
+                    "id": 4744,
+                    "name": "Return",
+                    "src": "819:19:38"
+                  }
+                ],
+                "id": 4745,
+                "name": "Block",
+                "src": "251:594:38"
+              }
+            ],
+            "id": 4746,
+            "name": "FunctionDefinition",
+            "src": "173:672:38"
+          }
+        ],
+        "id": 4747,
+        "name": "ContractDefinition",
+        "src": "110:737:38"
+      }
+    ],
+    "id": 4748,
+    "name": "SourceUnit",
+    "src": "33:815:38"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-11-08T13:12:28.838Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
